@@ -1,0 +1,64 @@
+.listUsers-ul {
+  display: flex;
+}
+
+.listUsers-ul li,
+.listUsers-ul_page {
+  list-style: none;
+  margin: 10px;
+}
+
+.listUsers-ul a {
+  text-decoration: none;
+}
+
+.listUsers-table {
+  width: 90%;
+  margin: 20px auto;
+  border: 1px solid;
+  text-align: center;
+  table-layout: auto;
+}
+
+.listUsers-table tr,
+.listUsers-table th,
+.listUsers-table td {
+  border: 1px solid;
+}
+
+.listUsers-table a {
+  display: block;
+}
+
+.listUsers-table_tr {
+  cursor: pointer;
+
+  &:hover {
+    background-color: #e2e4e7;
+    transition: 0.5s;
+  }
+}
+
+.listUsers-ul_page{
+  display: flex;
+  justify-content: center;
+}
+
+.listUsers-ul_page li {
+  width: 30px;
+  height: 20px;
+  border: 1px solid;
+  background-color: rgba(159, 205, 255, 0.23);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 5px;
+  //color: rgba(204, 35, 31, 0.47);
+  &:hover{
+    background-color: #adafb2;
+    color: #ffffff;
+    transition: 0.5s;
+  }
+}
+

@@ -1,0 +1,71 @@
+.userPage-ul{
+  display: flex;
+}
+.userPage-ul li{
+  list-style: none;
+  margin: 10px;
+}
+.userPage-ul a{
+  text-decoration: none;
+}
+.userPage-table{
+  width: 70%;
+  margin: 20px auto;
+  text-align: center;
+  table-layout: auto;
+  border: 1px solid;
+}
+.userPage-table tr,
+.userPage-table td,
+.userPage-table th{
+  border: 1px solid;
+}
+
+.userPage canvas{
+  //width: 600px;
+  //height: 300px;
+  margin: 20px auto;
+  display: block;
+  border: 2px solid;
+}
+
+#userPage-date{
+  margin: 10px 0 10px 30%;
+}
+#userPage-date span{
+  margin-right: 5px;
+}
+#userPage-date > input{
+  width: 170px;
+  height: 17px;
+}
+.react-datepicker__close-icon{
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  outline: 0;
+  padding: 0 6px 0 0;
+  position: absolute;
+  top: 0;
+  right: -5px;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+
+}
+
+.react-datepicker__close-icon::after{
+  cursor: pointer;
+  background-color: #216ba5;
+  color: #fff;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  padding: 1px;
+  /* font-size: 12px; */
+  /* line-height: 1; */
+  /* text-align: center; */
+  display: table-cell;
+  vertical-align: middle;
+  content: "\00d7";
+}

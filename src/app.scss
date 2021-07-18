@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+$fontFamily: "Montserrat";
+//variables
+$fontFamily: "Montserrat";
+$md1:1100px;
+$md2:740px;
+$md3:640px;
+$md4:500px;
+
+body{
+  font-family: $fontFamily;
+  margin: 0;
+}
 h1{
   text-align: center;
   cursor: pointer;

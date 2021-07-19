@@ -93,16 +93,53 @@ function UserPage(props) {
     function draw(ctx, canvas,key) {
         // resize(ctx, canvas);
         // ctx.viewport(0, 0, ctx.canvas.width, ctx.canvas.height);
-        ctx.scale(1, 3);
-        ctx.fillStyle = 'green';
+        ctx.fillStyle = `#FFFFFF`;
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.lineWidth=1;
+        ctx.beginPath();
+        ctx.strokeStyle=`#CCCCCC`;
+        ctx.moveTo(50, 14);
+        ctx.lineTo(1190, 14);
+        ctx.moveTo(50, 64);
+        ctx.lineTo(1190, 64);
+        ctx.moveTo(50, 114);
+        ctx.lineTo(1190, 114);
+        ctx.moveTo(50, 164);
+        ctx.lineTo(1190, 164);
+        ctx.moveTo(50, 214);
+        ctx.lineTo(1190, 214);
+        ctx.moveTo(50, 264);
+        ctx.lineTo(1190, 264);
+        ctx.stroke();
+
+        ctx.font = "16px Montserrat";
+        ctx.fillStyle = `#CCCCCC`;
+        // ctx.lineWidth = 1;
+        ctx.textAlign = "left";
+        ctx.fillText("1000", 0, 20 );
+        ctx.fillText("800", 10, 70 );
+        ctx.fillText("600", 10, 120 );
+        ctx.fillText("400", 10, 170 );
+        ctx.fillText("200", 10, 220 );
+        ctx.fillText("0", 30, 270 );
+        ctx.fillText("Nov", 135, 300 );
+        ctx.fillText("Dec", 270, 300 );
+        ctx.fillText("Jan", 405, 300 );
+        ctx.fillText("Feb", 540, 300 );
+        ctx.fillText("Mar", 675, 300 );
+        ctx.fillText("Apr", 810, 300 );
+        ctx.fillText("May", 945, 300 );
+        ctx.fillText("Jun", 1080, 300 );
+
+        ctx.scale(1, 3);
         ctx.lineWidth = 2;
         ctx.beginPath();
+        ctx.strokeStyle=`#3A80BA`;
         for (let i = 0; i < coordinates.length; i++) {
             if (i === 0) {
-                ctx.moveTo(coordinates[i]['date'] * 20, (300 - coordinates[i][key] * 0.25) / 3);
+                ctx.moveTo(coordinates[i]['date'] * 30, (270 - coordinates[i][key] * 0.25) / 3);
             } else
-                ctx.lineTo(coordinates[i]['date'] * 20, (300 - coordinates[i][key] * 0.25) / 3);
+                ctx.lineTo(coordinates[i]['date'] * 30, (270 - coordinates[i][key] * 0.25) / 3);
         }
         // ctx.closePath();
         ctx.stroke();
@@ -116,14 +153,14 @@ function UserPage(props) {
                 users(json);
                 dispatch({type: 'statistics user', payload: json});
                 const canvas = ref.current;
-                canvas.width = 700;
-                canvas.height = 350;
+                canvas.width = 1200;
+                canvas.height = 330;
                 const ctx = canvas.getContext('2d');
                 draw(ctx, canvas,'clicks');
                 //canvas1//
                 const canvas1=ref1.current;
-                canvas1.width=700;
-                canvas1.height=350;
+                canvas1.width=1200;
+                canvas1.height=330;
                 const ctx1=canvas1.getContext('2d');
                 draw(ctx1, canvas1, 'page_views' );
             });

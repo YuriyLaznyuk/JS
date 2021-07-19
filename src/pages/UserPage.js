@@ -10,6 +10,7 @@ import './styles/userPage.scss';
 
 function UserPage(props) {
     const ref = useRef();
+    const ref1=useRef();
 
     const [dateRange, setDateRange] = useState([new Date(), new Date()]);
     const [startDate, endDate] = dateRange;
@@ -89,7 +90,7 @@ function UserPage(props) {
         return false;
     }
 
-    function draw(ctx, canvas) {
+    function draw(ctx, canvas,key) {
         // resize(ctx, canvas);
         // ctx.viewport(0, 0, ctx.canvas.width, ctx.canvas.height);
         ctx.scale(1, 3);
@@ -99,9 +100,9 @@ function UserPage(props) {
         ctx.beginPath();
         for (let i = 0; i < coordinates.length; i++) {
             if (i === 0) {
-                ctx.moveTo(coordinates[i]['date'] * 20, (300 - coordinates[i]['page_views'] * 0.25) / 3);
+                ctx.moveTo(coordinates[i]['date'] * 20, (300 - coordinates[i][key] * 0.25) / 3);
             } else
-                ctx.lineTo(coordinates[i]['date'] * 20, (300 - coordinates[i]['page_views'] * 0.25) / 3);
+                ctx.lineTo(coordinates[i]['date'] * 20, (300 - coordinates[i][key] * 0.25) / 3);
         }
         // ctx.closePath();
         ctx.stroke();
@@ -118,13 +119,21 @@ function UserPage(props) {
                 canvas.width = 700;
                 canvas.height = 350;
                 const ctx = canvas.getContext('2d');
-                draw(ctx, canvas);
+                draw(ctx, canvas,'clicks');
+                //canvas1//
+                const canvas1=ref1.current;
+                canvas1.width=700;
+                canvas1.height=350;
+                const ctx1=canvas1.getContext('2d');
+                draw(ctx1, canvas1, 'page_views' );
             });
     }, []);
+
     console.log(str(startDate));
     console.log(str(endDate));
     rangeData(str(startDate), str(endDate));
     console.log(strDates());
+
     return (
         <div className='userPage'>
             <ul className='userPage-ul' style={{backgroundColor: '#005aff5c'}}>
@@ -162,6 +171,8 @@ function UserPage(props) {
             </table>
 
             <canvas ref={ref}>
+            </canvas>
+            <canvas ref={ref1}>
             </canvas>
 
 

@@ -10,25 +10,30 @@
       height: 72px;
       display: flex;
       align-items: center;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 40px;
-      line-height: 49/40*100%;
+      padding: 0 0 0 130px;
       background-color: #3A80BA;
-      color: #ffffff;
+      @media (max-width: 500px) {
+        padding: 0 0 0 30px;
+      }
 
       &-title {
-        padding: 0 0 0 130px;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 49/40*100%;
+        color: #FFFFFF;
       }
     }
 
     //nav
     &__nav {
-      background-color: #ffffff;
+      padding: 20px 0 0 130px;
+      @media (max-width: 500px) {
+        padding: 15px 0 0 30px;
+      }
 
       ul {
-        padding: 20px 0 0 130px;
         display: flex;
+        padding: 0;
 
         li {
           list-style: none;
@@ -71,6 +76,11 @@
 
     &__container {
       padding: 0 0 0 130px;
+
+      @media (max-width: 500px) {
+        padding: 0 0 0 30px;
+      }
+
     }
 
     &__title {

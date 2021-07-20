@@ -1,71 +1,273 @@
-.userPage-ul{
-  display: flex;
-}
-.userPage-ul li{
-  list-style: none;
-  margin: 10px;
-}
-.userPage-ul a{
-  text-decoration: none;
-}
-.userPage-table{
-  width: 70%;
-  margin: 20px auto;
-  text-align: center;
-  table-layout: auto;
-  border: 1px solid;
-}
-.userPage-table tr,
-.userPage-table td,
-.userPage-table th{
-  border: 1px solid;
-}
+//.userPage-ul{
+//  display: flex;
+//}
+//.userPage-ul li{
+//  list-style: none;
+//  margin: 10px;
+//}
+//.userPage-ul a{
+//  text-decoration: none;
+//}
+//.userPage-table{
+//  width: 70%;
+//  margin: 20px auto;
+//  text-align: center;
+//  table-layout: auto;
+//  border: 1px solid;
+//}
+//.userPage-table tr,
+//.userPage-table td,
+//.userPage-table th{
+//  border: 1px solid;
+//}
+//
+//.userPage canvas{
+//  //width: 600px;
+//  //height: 300px;
+//  margin: 20px auto;
+//  display: block;
+//  border: 2px solid;
+//}
+//
+//#userPage-date{
+//  margin: 10px 0 10px 30%;
+//}
+//#userPage-date span{
+//  margin-right: 5px;
+//}
+//#userPage-date > input{
+//  width: 170px;
+//  height: 17px;
+//}
+//.react-datepicker__close-icon{
+//  cursor: pointer;
+//  background-color: transparent;
+//  border: 0;
+//  outline: 0;
+//  padding: 0 6px 0 0;
+//  position: absolute;
+//  top: 0;
+//  right: -5px;
+//  height: 100%;
+//  display: table-cell;
+//  vertical-align: middle;
+//
+//}
+//
+//.react-datepicker__close-icon::after{
+//  cursor: pointer;
+//  background-color: #216ba5;
+//  color: #fff;
+//  border-radius: 50%;
+//  height: 15px;
+//  width: 15px;
+//  padding: 1px;
+//  /* font-size: 12px; */
+//  /* line-height: 1; */
+//  /* text-align: center; */
+//  display: table-cell;
+//  vertical-align: middle;
+//  content: "\00d7";
+//}
 
-.userPage canvas{
-  //width: 600px;
-  //height: 300px;
-  margin: 20px auto;
-  display: block;
-  border: 2px solid;
-}
+@import "../../app";
 
-#userPage-date{
-  margin: 10px 0 10px 30%;
-}
-#userPage-date span{
-  margin-right: 5px;
-}
-#userPage-date > input{
-  width: 170px;
-  height: 17px;
-}
-.react-datepicker__close-icon{
-  cursor: pointer;
-  background-color: transparent;
-  border: 0;
-  outline: 0;
-  padding: 0 6px 0 0;
-  position: absolute;
-  top: 0;
-  right: -5px;
-  height: 100%;
-  display: table-cell;
-  vertical-align: middle;
+.userPage {
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 
-}
+  font-family: $fontFamily;
 
-.react-datepicker__close-icon::after{
-  cursor: pointer;
-  background-color: #216ba5;
-  color: #fff;
-  border-radius: 50%;
-  height: 15px;
-  width: 15px;
-  padding: 1px;
-  /* font-size: 12px; */
-  /* line-height: 1; */
-  /* text-align: center; */
-  display: table-cell;
-  vertical-align: middle;
-  content: "\00d7";
+  .header-userPage {
+
+    &__top {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      padding: 0 0 0 130px;
+      background: #3A80BA;
+      @media (max-width: 500px) {
+        padding: 0 0 0 30px;
+      }
+
+      &-title {
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 49/40*100%;
+        color: #FFFFFF;
+      }
+
+    }
+
+    &__nav {
+      padding: 20px 0 0 130px;
+      @media (max-width: 500px) {
+        padding: 15px 0 0 30px;
+      }
+
+      ul {
+        display: flex;
+        padding: 0;
+
+        li {
+          list-style: none;
+          font-weight: normal;
+          font-size: 16px;
+          line-height: 20/16*100%;
+          color: #CCCCCC;
+
+          &:last-child {
+            color: #3A80BA;
+          }
+
+          &:nth-child(2),
+          &:nth-child(4) {
+            width: 6px;
+            height: 6px;
+            border-color: #8f8f8f;
+            border-top: 2px solid;
+            border-right: 2px solid;
+            transform: rotate(45deg);
+            margin: 6px 6px 6px 5px;
+          }
+        }
+      }
+    }
+
+    &__user {
+      display: flex;
+      align-items: baseline;
+      margin: 24px 0 0 130px ;
+
+      @media(max-width: 800px){
+        flex-direction: column;
+      }
+
+      @media(max-width: 500px){
+        margin: 18px 0 0 30px;
+      }
+
+
+      &-name {
+        font-weight: bold;
+        font-size: 32px;
+        line-height: 39/32*100%;
+        color: #1A1A1A;
+      }
+
+      &-datePicker {
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17/14*100%;
+        color: #444444;
+        //margin: 0 0 0 629px;
+        margin: 0 0 0 50%;
+        @media(max-width: 1100px){
+          margin: 0 0 0 40%;
+        }
+        @media(max-width: 900px){
+          margin: 0 0 0 30%;
+        }
+
+        @media(max-width: 800px){
+          margin: 20px 0 0 0;
+        }
+      }
+
+    }
+
+  }
+
+  .main-userPage{
+    margin:0 0 50px 130px ;
+    overflow: auto;
+    @media (max-width: 500px) {
+      margin: 17px 0 25px 30px;
+    }
+
+    &__content{
+      &-title{
+        padding: 24px 0 24px 0;
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29/24*100%;
+        color: #1A1A1A;
+
+      }
+    }
+  }
+
+  .footer-userPage {
+    min-height: 57px;
+    height: 100%;
+    margin: 41px 0 0 0;
+    background: #1C3B55;
+
+    &__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px 0 0 0;
+      @media (max-width: 480px) {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      &_title {
+        /* AppCo */
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 29/24*100%;
+        color: #FFFFFF;
+        @media (max-width: 625px) {
+          font-size: 20px;
+        }
+
+      }
+
+
+      &_text,
+      &_center {
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 142%;
+        color: #FFFFFF;
+        @media (max-width: 625px) {
+          font-size: 14px;
+        }
+
+      }
+
+      &_center {
+        margin: 0 22% 0 22%;
+        @media (max-width: 930px) {
+          margin: 0 10%;
+        }
+        @media (max-width: 625px) {
+          margin: 0 5%;
+        }
+
+        @media (max-width: 480px) {
+          margin: 10px 0;
+        }
+      }
+
+    }
+  }
+
+  .react-datepicker__input-container {
+    input{
+      width: 170px;
+      height:20px;
+      font-weight: normal;
+      font-size: 12px;
+      line-height: 15/12*100%;
+      color: #444444;
+
+    }
+  }
+
+
 }

@@ -3,13 +3,15 @@ const app = express();
 const fs = require('fs');
 const path = require('path');
 const rootDir = path.join(path.resolve(), 'dist');
+// const rootDir = path.resolve('dist');
+
 const rootDB = path.join(path.resolve(), 'db');
 const rootFiles = path.join(path.resolve(), 'files');
 const fileUsers = path.join(rootFiles, 'users.json');
 const fileUsersStat = path.join(rootFiles, 'users_statistic.json');
 const sqlite3 = require('sqlite3').verbose();
 require('dotenv').config();
-
+//async func
 const contentUsers = fs.readFileSync(fileUsers, 'utf8');
 const contentUsersStat = fs.readFileSync(fileUsersStat, 'utf8');
 const users = JSON.parse(contentUsers);
@@ -141,7 +143,7 @@ app.get('/api/users/:id', (req, res) => {
         });
     const id = req.params.id;
     db.serialize(() => {
-        let sql = `SELECT DISTINCT date, page_views, clicks FROM users_statistic AS US WHERE US.user_id=${id}`;
+        let sql = `SELECT DISTINCT date,  , clicks FROM users_statistic AS US WHERE US.user_id=${id}`;
         db.all(sql, (err, row) => {
             if (err) {
                 console.log(err);

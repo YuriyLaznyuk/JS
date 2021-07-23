@@ -27,7 +27,6 @@ let db = new sqlite3.Database(path.join(rootDB, 'users-statistics.db'), sqlite3.
         console.log('Connected to the users-statistics database');
     });
 
-
 app.use(express.static(rootDir + "/"));
 
 app.get("/", (req, res) => {
@@ -104,10 +103,10 @@ VALUES (?,?,?,?,?,?,?,?)`, [users[i]['id'], users[i]['first_name'], users[i]['la
 });
 
 app.get("/api/total/:number", (req, res) => {
-const number=req.params.number;
-const col=process.env.LIMIT;
-const minId=(number-1)*col+1;
-const maxId=number*col;
+    const number = req.params.number;
+    const col = process.env.LIMIT;
+    const minId = (number - 1) * col + 1;
+    const maxId = number * col;
 
     let db = new sqlite3.Database(path.join(rootDB, 'users-statistics.db'), sqlite3.OPEN_READWRITE,
         err => {
@@ -143,7 +142,7 @@ app.get('/api/users/:id', (req, res) => {
         });
     const id = req.params.id;
     db.serialize(() => {
-        let sql = `SELECT DISTINCT date,  , clicks FROM users_statistic AS US WHERE US.user_id=${id}`;
+        let sql = `SELECT DISTINCT date, page_views , clicks FROM users_statistic AS US WHERE US.user_id=${id}`;
         db.all(sql, (err, row) => {
             if (err) {
                 console.log(err);

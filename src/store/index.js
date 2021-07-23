@@ -1,10 +1,10 @@
 import {createStore, combineReducers, applyMiddleware} from "redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import thunk from "redux-thunk";
-import {initReducer} from "./reducers/initReducer";
+import {workReducer} from "./reducers/workReducer";
 
 const rootReducers = combineReducers({
-    sqlite: initReducer
+    sqlite: workReducer
 });
 
 export const store = createStore(rootReducers,

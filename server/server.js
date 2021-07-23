@@ -1,21 +1,39 @@
 const express = require('express');
-const app = express();
+require('dotenv').config();
 const fs = require('fs');
 const path = require('path');
-const rootDir = path.join(path.resolve(), 'dist');
-// const rootDir = path.resolve('dist');
-
-const rootDB = path.join(path.resolve(), 'db');
-const rootFiles = path.join(path.resolve(), 'files');
+const app = express();
+const rootDir = path.resolve('dist');
+const rootDB = path.resolve('db');
+const rootFiles = path.resolve('files');
 const fileUsers = path.join(rootFiles, 'users.json');
 const fileUsersStat = path.join(rootFiles, 'users_statistic.json');
 const sqlite3 = require('sqlite3').verbose();
-require('dotenv').config();
 //async func
-const contentUsers = fs.readFileSync(fileUsers, 'utf8');
-const contentUsersStat = fs.readFileSync(fileUsersStat, 'utf8');
-const users = JSON.parse(contentUsers);
-const usersStatistic = JSON.parse(contentUsersStat);
+// const contentUsers = fs.readFileSync(fileUsers, 'utf8');
+// const contentUsersStat = fs.readFileSync(fileUsersStat, 'utf8');
+// const users = JSON.parse(contentUsers);
+// const usersStatistic = JSON.parse(contentUsersStat);
+
+let users;
+let usersStatistic;
+
+fs.readFile(fileUsers, "utf8", function (err, data) {
+    if (err) {
+        throw err;
+    } else
+        users = JSON.parse(data);
+});
+
+fs.readFile(fileUsersStat, "utf8", function (err, data) {
+    if (err) {
+        throw err;
+    } else
+        usersStatistic = JSON.parse(data);
+});
+
+/////////////////
+
 let PORT = process.env.PORT || 8585;
 
 let reg = /^\/(statistics|user-page\/\d)$/;
@@ -27,7 +45,13 @@ let db = new sqlite3.Database(path.join(rootDB, 'users-statistics.db'), sqlite3.
         console.log('Connected to the users-statistics database');
     });
 
+
+
+
+
 app.use(express.static(rootDir + "/"));
+
+
 
 app.get("/", (req, res) => {
     res.sendFile(path.join(rootDir, 'index.html'));
@@ -62,6 +86,9 @@ app.get("/api/users", (req, res) => {
             });
         });
 
+
+
+
         db.run(`CREATE TABLE IF NOT EXISTS users (
 id INT ,
 first_name VARCHAR (20),
@@ -70,7 +97,7 @@ email VARCHAR (20),
 gender VARCHAR (20),
 ip_address VARCHAR (20),
 sumViews INT ,
-sumClicks INT 
+sumClicks INT
 )`);
 
         db.run(`CREATE TABLE IF NOT EXISTS users_statistic (

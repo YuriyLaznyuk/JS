@@ -1,6 +1,6 @@
 const defaultState = {user: '', statistics: '', total: '', name: '', quantity: ''};
 
-export function initReducer(state = defaultState, action) {
+export function workReducer(state = defaultState, action) {
     switch (action.type) {
         case 'statistics user':
             return {...state, user: action.payload};

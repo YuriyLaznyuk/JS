@@ -12,10 +12,8 @@ import './styles/userPage.scss';
 function UserPage(props) {
     const ref = useRef();
     const ref1 = useRef();
-
     const [dateRange, setDateRange] = useState([new Date(), new Date()]);
     const [startDate, endDate] = dateRange;
-
     const dispatch = useDispatch();
     const {user, name} = useSelector(state => state.sqlite);
     const host = window.location.origin;
@@ -51,20 +49,6 @@ function UserPage(props) {
     };
 
     //-------//
-
-    let row = () => {
-        if (user.length > 0) {
-            return user.map((user, index) => (
-                <tr key={index}>
-                    <td>{user.date}</td>
-                    <td>{user.page_views}</td>
-                    <td>{user.clicks}</td>
-                </tr>
-            ));
-        } else {
-            return '';
-        }
-    };
 
     const users = (user) => {
         user.length > 0 && user.map(elem => {
@@ -134,7 +118,7 @@ function UserPage(props) {
         ctx.lineWidth = 2;
         ctx.beginPath();
         ctx.strokeStyle = `#3A80BA`;
-        ctx.lineWidth=6;
+        ctx.lineWidth = 6;
         ctx.lineJoin = 'round';
         for (let i = 0; i < coordinates.length; i++) {
             if (i === 0) {
@@ -147,7 +131,7 @@ function UserPage(props) {
         const index = coordinates.length - 1;
         ctx.beginPath();
         // ctx.scale(1, 1);
-        ctx.fillStyle='#3A80BA';
+        ctx.fillStyle = '#3A80BA';
         ctx.arc(coordinates[0]['date'] * 30, (270 - coordinates[0][key] * 0.25),
             8, 0, 2 * Math.PI);
 
@@ -187,9 +171,6 @@ function UserPage(props) {
         <div className='userPage'>
 
 
-
-
-
             <header className="header-userPage">
                 <div className="header-userPage__top">
                     <div className="header-userPage__top-title">
@@ -224,8 +205,6 @@ function UserPage(props) {
             </header>
 
 
-
-
             <main className="main-userPage">
                 <section className="main-userPage__content">
                     <div className="main-userPage__content-title">Clicks</div>
@@ -243,8 +222,6 @@ function UserPage(props) {
                 </section>
 
             </main>
-
-
 
 
             <footer className="footer-userPage">

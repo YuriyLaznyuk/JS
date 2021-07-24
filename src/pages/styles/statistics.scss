@@ -1,6 +1,5 @@
-
-
 @import "../../app";
+
 .statistics {
   font-family: $fontFamily;
 
@@ -43,7 +42,7 @@
           color: #CCCCCC;
 
           &:nth-child(1) {
-            a{
+            a {
               text-decoration: none;
               color: #CCCCCC;
             }
@@ -185,9 +184,12 @@
         font-size: 16px;
         line-height: 20/16*100%;
         color: #1A1A1A;
-        &:hover{
-          border-color: rgba(243, 0, 0, 0.5);
-          transition: 0.5s;
+        @media (min-width: 1315px) {
+          &:hover {
+            border-color: rgba(243, 0, 0, 0.5);
+            transition: 0.5s;
+          }
+
         }
 
         &:nth-child(1) {
@@ -201,9 +203,12 @@
             //border-color: #3A80BA;
             border-color: #F1F1F1;
             transform: rotate(-45deg);
-            &:hover{
-              border-color: rgba(243, 0, 0, 0.5);
-              transition: 0.5s;
+            @media(min-width: 1315px) {
+              &:hover {
+                border-color: rgba(243, 0, 0, 0.5);
+                transition: 0.5s;
+              }
+
             }
           }
 
@@ -221,7 +226,8 @@
             //border-color: #3A80BA;
             border-color: #F1F1F1;
             transform: rotate(45deg);
-            &:hover{
+
+            &:hover {
               border-color: rgba(243, 0, 0, 0.5);
               transition: 0.5s;
             }

@@ -4,3 +4,6 @@
 # editors
 .idea/
 .vscode/
+
+#.env
+.env

@@ -3,22 +3,20 @@ const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
 const MongoClient = require('mongodb').MongoClient;
-const objectId = require('mongodb').ObjectId;
 const app = express();
 const rootDir = path.resolve('dist');
-const jsonParser = express.json();
 const rootFiles = path.resolve('files');
 const fileUsers = path.join(rootFiles, 'users.json');
 const fileUsersStat = path.join(rootFiles, 'users_statistic.json');
 let PORT = process.env.PORT || 3535;
-const reg = /^\/(statistics|user-page\/d)$/;
+const reg = /^(\/|\/statistics|\/user-page\/\d)$/;
 let users;
 let usersStatistic;
 let dbClient;
-const urlLocal = 'mongodb://localhost:27017/';
-const urlMongo = 'mongodb+srv://backend:backend123@cluster0.xvkzn.mongodb.net/new_base?retryWrites=true&w=majority';
+// const urlLocal = 'mongodb://localhost:27017/';
 // const mongoClient = new MongoClient(urlLocal, {useUnifiedTopology: true});
-const mongoClient = new MongoClient(urlMongo, { useUnifiedTopology: true });
+
+const mongoClient = new MongoClient(process.env.URL_MONGO, { useUnifiedTopology: true });
 
 fs.readFile(fileUsers, 'utf8', function(err, data) {
   if (err) {
@@ -40,22 +38,18 @@ mongoClient.connect((err, client) => {
   if (err) {
     console.log(err);
   }
-  dbClient=client;
+  dbClient = client;
   app.locals = client.db('usersdb');
 
-    app.listen(PORT, () => console.log('server_mongo PORT: '
-      + PORT + ' LIMIT ' + process.env.LIMIT));
+  app.listen(PORT, () => console.log('server_mongo PORT: '
+    + PORT + ' LIMIT ' + process.env.LIMIT));
 
 });
 
-app.use(express.static(path.join(rootDir, '/')));
-
-app.get('/', (req, res) => {
-  res.sendFile(path.join(rootDir, 'index.html'));
-});
+app.use(express.static(rootDir));
 
 app.get(reg, (req, res) => {
-  res.sendFile(path.join(rootDir, 'index.html'));
+  res.sendFile(path.resolve('dist','index.html'));
 });
 
 app.get('/api/users', (req, res) => {
@@ -167,6 +161,10 @@ app.get('/api/users/:id', (req, res) => {
     }
   });
 
+});
+
+app.use((req, res) => {
+  res.status(404).sendFile(path.resolve('dist','error.html'));
 });
 
 process.on('SIGINT', () => {
